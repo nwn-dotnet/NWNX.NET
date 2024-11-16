@@ -1,0 +1,3 @@
+[submodule "NWNX.NET.Tests/src/lib/nunit"]
+	path = NWNX.NET.Tests/src/lib/nunit
+	url = https://github.com/nwn-dotnet/nunit.git
