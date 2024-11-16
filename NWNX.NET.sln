@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NWNX.NET", "NWNX.NET\NWNX.NET.csproj", "{081AAA91-DEF3-495A-AFEC-BBF04F290AE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NWNX.NET.Tests", "NWNX.NET.Tests\NWNX.NET.Tests.csproj", "{D28071F8-728A-49AA-AA43-C4B7B9E4E4FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{081AAA91-DEF3-495A-AFEC-BBF04F290AE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{081AAA91-DEF3-495A-AFEC-BBF04F290AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{081AAA91-DEF3-495A-AFEC-BBF04F290AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{081AAA91-DEF3-495A-AFEC-BBF04F290AE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D28071F8-728A-49AA-AA43-C4B7B9E4E4FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D28071F8-728A-49AA-AA43-C4B7B9E4E4FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D28071F8-728A-49AA-AA43-C4B7B9E4E4FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D28071F8-728A-49AA-AA43-C4B7B9E4E4FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
