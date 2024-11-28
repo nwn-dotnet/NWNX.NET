@@ -1,0 +1,104 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  compile:
+    runs-on: ubuntu-20.04
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    permissions:
+      security-events: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1.9.0
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build
+        run: dotnet build --configuration Debug
+
+      - name: Prepare Outputs
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+
+      - name: Code Analysis Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.local/share/JetBrains
+          key: analysis-cache-${{ steps.vars.outputs.sha_short }}
+          restore-keys: |
+            analysis-cache
+
+      - name: Code Analysis
+        uses: JetBrains/ReSharper-InspectCode@v0.3
+        with:
+          solution: ./NWNX.NET.sln
+          tool-version: 2024.1.0
+
+  test:
+    runs-on: ubuntu-20.04
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Build and run tests
+        uses: devcontainers/ci@v0.3
+        with:
+          env: |
+            NWNX_DOTNET_ASSEMBLY=/workspace/NWNX.NET.Tests/bin/Release/NWNX.NET.Tests
+            NWNX_DOTNET_TEST_RESULT_PATH=/workspace/NWNX.NET.Tests/bin/Release/NWNX.NET.Tests/results
+          runCmd: |
+            dotnet build --configuration Release
+            cd /nwn/data/bin/linux-amd64
+            /nwn/run-server.sh
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1.9.0
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Install NUnit
+        run: nuget install NUnit.Console -Version 3.12.0
+
+      - name: Fetch transform code
+        run: wget https://raw.githubusercontent.com/nunit/nunit-transforms/master/nunit3-junit/nunit3-junit.xslt
+        shell: bash
+
+      - name: Transform NUnit3 to JUnit
+        run: |
+            $xslt = New-Object System.Xml.Xsl.XslCompiledTransform;
+            $xslt.Load("nunit3-junit.xslt");
+            $xslt.Transform("NWNX.NET.Tests/bin/Release/NWNX.NET.Tests/results/TestResult.xml", "TestResult.junit.xml");
+        shell: pwsh
+
+      - name: Upload Event File
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Event File
+          path: ${{ github.event_path }}
+
+      - name: Upload Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Test Results
+          path: TestResult.junit.xml
