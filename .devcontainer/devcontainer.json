@@ -1,0 +1,39 @@
+{
+  "name": "nwnx.net",
+  "image": "nwnxee/unified:build8193.36",
+  "workspaceFolder": "/workspace",
+  "features": {
+    "ghcr.io/devcontainers/features/dotnet:2": {
+      "version": "8.0"
+    },
+    "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+      "packages": "curl,unzip,procps,git"
+    }
+  },
+  "forwardPorts": [5121],
+  "containerEnv": {
+    "NWN_AUTOSAVEINTERVAL": "0",
+    "NWN_DIFFICULTY": "4",
+    "NWN_ELC": "1",
+    "NWN_GAMETYPE": "3",
+    "NWN_LR": "0",
+    "NWN_MAXCLIENTS": "1",
+    "NWN_MAXLEVEL": "40",
+    "NWN_MINLEVEL": "1",
+    "NWN_ONEPARTY": "0",
+    "NWN_PAUSEANDPLAY": "0",
+    "NWN_PUBLICSERVER": "0",
+    "NWN_PVP": "2",
+    "NWN_RELOADWHENEMPTY": "0",
+    "NWN_SERVERVAULT": "1",
+    "NWNX_CORE_SKIP_ALL": "y",
+    "NWNX_DOTNET_ENTRYPOINT": "NWNX.NET.Tests.Program",
+    "NWNX_DOTNET_METHOD": "Main",
+    "NWNX_DOTNET_NEW_BOOTSTRAP": "y",
+    "NWNX_DOTNET_SKIP": "n",
+    "NWNX_SWIG_DOTNET_SKIP": "n",
+    "NWNX_DOTNET_ASSEMBLY": "/workspace/NWNX.NET.Tests/bin/Debug/NWNX.NET.Tests",
+    "NWNX_DOTNET_TEST_RESULT_PATH": "/workspace/NWNX.NET.Tests/bin/Debug/NWNX.NET.Tests/results",
+    "NWNX_CORE_LOG_LEVEL": "7"
+  }
+}
