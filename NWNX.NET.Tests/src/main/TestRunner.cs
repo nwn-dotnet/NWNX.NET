@@ -9,6 +9,7 @@ namespace NWNX.NET.Tests
 {
   public sealed unsafe class TestRunner
   {
+    private static readonly string TestResultPath = Path.GetFullPath(Environment.GetEnvironmentVariable("NWNX_DOTNET_TEST_RESULT_PATH") ?? "results", Environment.CurrentDirectory);
     private static readonly int* ExitProgram = (int*)NativeLibrary.GetExport(NativeLibrary.GetMainProgramHandle(), "g_bExitProgram");
 
     private readonly TextRunner testRunner;
@@ -45,8 +46,7 @@ namespace NWNX.NET.Tests
 
     private string[] GetRunnerArguments()
     {
-      string outputPath = Path.Combine(Environment.CurrentDirectory, "results");
-      return ["--mainthread", $"--work={outputPath}"];
+      return ["--mainthread", $"--work={TestResultPath}"];
     }
   }
 }
