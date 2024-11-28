@@ -1,13 +1,16 @@
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading;
 using NUnit.Framework.Internal.Commands;
 using NUnitLite;
 
 namespace NWNX.NET.Tests
 {
-  public sealed class TestRunner
+  public sealed unsafe class TestRunner
   {
+    private static readonly int* ExitProgram = (int*)NativeLibrary.GetExport(NativeLibrary.GetMainProgramHandle(), "g_bExitProgram");
+
     private readonly TextRunner testRunner;
     private Thread? testWorkerThread;
 
@@ -26,7 +29,18 @@ namespace NWNX.NET.Tests
     private void ExecuteTestRun()
     {
       int result = testRunner.Execute(GetRunnerArguments());
-      Environment.Exit(result);
+      string output = $"Test runner result: {result}";
+
+      Console.WriteLine(output);
+
+      if (result == 0)
+      {
+        *ExitProgram = 1;
+      }
+      else
+      {
+        Environment.FailFast(output);
+      }
     }
 
     private string[] GetRunnerArguments()
