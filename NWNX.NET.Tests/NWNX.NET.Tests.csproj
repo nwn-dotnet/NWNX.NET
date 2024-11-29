@@ -98,8 +98,4 @@
   <ItemGroup>
     <ProjectReference Include="..\NWNX.NET\NWNX.NET.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ContentWithTargetPath Include="src\docker\**" TargetPath="%(RecursiveDir)%(FileName)%(Extension)" CopyToOutputDirectory="Always" />
-  </ItemGroup>
 </Project>
