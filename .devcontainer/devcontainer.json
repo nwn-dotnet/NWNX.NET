@@ -1,7 +1,8 @@
 {
   "name": "nwnx.net",
   "image": "nwnxee/unified:build8193.36",
-  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/NWNX.NET,type=bind",
+  "workspaceFolder": "/workspaces/NWNX.NET",
   "features": {
     "ghcr.io/devcontainers/features/dotnet:2": {
       "version": "8.0"
@@ -32,8 +33,8 @@
     "NWNX_DOTNET_NEW_BOOTSTRAP": "y",
     "NWNX_DOTNET_SKIP": "n",
     "NWNX_SWIG_DOTNET_SKIP": "n",
-    "NWNX_DOTNET_ASSEMBLY": "/workspace/NWNX.NET.Tests/bin/Debug/NWNX.NET.Tests",
-    "NWNX_DOTNET_TEST_RESULT_PATH": "/workspace/NWNX.NET.Tests/bin/Debug/NWNX.NET.Tests/results",
+    "NWNX_DOTNET_ASSEMBLY": "/workspaces/NWNX.NET/NWNX.NET.Tests/bin/Debug/NWNX.NET.Tests",
+    "NWNX_DOTNET_TEST_RESULT_PATH": "/workspaces/NWNX.NET/NWNX.NET.Tests/bin/Debug/NWNX.NET.Tests/results",
     "NWNX_CORE_LOG_LEVEL": "7"
   }
 }
