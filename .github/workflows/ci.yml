@@ -64,8 +64,8 @@ jobs:
         uses: devcontainers/ci@v0.3
         with:
           env: |
-            NWNX_DOTNET_ASSEMBLY=/workspace/NWNX.NET.Tests/bin/Release/NWNX.NET.Tests
-            NWNX_DOTNET_TEST_RESULT_PATH=/workspace/NWNX.NET.Tests/bin/Release/NWNX.NET.Tests/results
+            NWNX_DOTNET_ASSEMBLY=/workspaces/NWNX.NET/NWNX.NET.Tests/bin/Release/NWNX.NET.Tests
+            NWNX_DOTNET_TEST_RESULT_PATH=/workspaces/NWNX.NET/NWNX.NET.Tests/bin/Release/NWNX.NET.Tests/results
           runCmd: |
             dotnet build --configuration Release
             cd /nwn/data/bin/linux-amd64
