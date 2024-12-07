@@ -14,7 +14,7 @@ namespace NWNX.NET
     /// <param name="plugin">The name of the NWNX plugin containing the function to be called.</param>
     /// <param name="function">The name of the function to call.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "NWNXSetFunction")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void NWNXSetFunction([MarshalUsing(typeof(Utf16StringMarshaller))] string plugin, [MarshalUsing(typeof(Utf16StringMarshaller))] string function);
 
     /// <summary>
@@ -22,7 +22,7 @@ namespace NWNX.NET
     /// </summary>
     /// <param name="value">The value to push.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "NWNXPushInt")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void NWNXPushInt(int value);
 
     /// <summary>
@@ -30,7 +30,7 @@ namespace NWNX.NET
     /// </summary>
     /// <param name="value">The value to push.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "NWNXPushFloat")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void NWNXPushFloat(float value);
 
     /// <summary>
@@ -38,7 +38,7 @@ namespace NWNX.NET
     /// </summary>
     /// <param name="value">The value to push.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "NWNXPushRawString")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void NWNXPushString([MarshalUsing(typeof(NwStringMarshaller))] string? value);
 
     /// <summary>
@@ -46,7 +46,7 @@ namespace NWNX.NET
     /// </summary>
     /// <param name="value">The value to push.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "NWNXPushObject")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void NWNXPushObject(uint value);
 
     /// <summary>
@@ -54,7 +54,7 @@ namespace NWNX.NET
     /// </summary>
     /// <param name="value">The value to push.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "NWNXPushEffect")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     internal static partial void NWNXPushEffect(IntPtr value);
 
     /// <summary>
@@ -62,14 +62,14 @@ namespace NWNX.NET
     /// </summary>
     /// <param name="value">The value to push.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "NWNXPushItemProperty")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     internal static partial void NWNXPushItemProperty(IntPtr value);
 
     /// <summary>
     /// NWNX VM Function. Call the function set with <see cref="NWNXSetFunction"/> with the current argument stack.
     /// </summary>
     [LibraryImport("NWNX_DotNET", EntryPoint = "NWNXCallFunction")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void NWNXCallFunction();
 
     /// <summary>
@@ -77,7 +77,7 @@ namespace NWNX.NET
     /// </summary>
     /// <returns>The value/result from the function call.</returns>
     [LibraryImport("NWNX_DotNET", EntryPoint = "NWNXPopInt")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial int NWNXPopInt();
 
     /// <summary>
@@ -85,7 +85,7 @@ namespace NWNX.NET
     /// </summary>
     /// <returns>The value/result from the function call.</returns>
     [LibraryImport("NWNX_DotNET", EntryPoint = "NWNXPopFloat")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial float NWNXPopFloat();
 
     /// <summary>
@@ -93,7 +93,7 @@ namespace NWNX.NET
     /// </summary>
     /// <returns>The value/result from the function call.</returns>
     [LibraryImport("NWNX_DotNET", EntryPoint = "NWNXPopRawString")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     [return: MarshalUsing(typeof(NwStringMarshaller))]
     public static partial string? NWNXPopString();
 
@@ -102,7 +102,7 @@ namespace NWNX.NET
     /// </summary>
     /// <returns>The value/result from the function call.</returns>
     [LibraryImport("NWNX_DotNET", EntryPoint = "NWNXPopObject")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial uint NWNXPopObject();
 
     /// <summary>
@@ -110,7 +110,7 @@ namespace NWNX.NET
     /// </summary>
     /// <returns>The value/result from the function call.</returns>
     [LibraryImport("NWNX_DotNET", EntryPoint = "NWNXPopEffect")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial IntPtr NWNXPopEffect();
 
     /// <summary>
@@ -118,7 +118,7 @@ namespace NWNX.NET
     /// </summary>
     /// <returns>The value/result from the function call.</returns>
     [LibraryImport("NWNX_DotNET", EntryPoint = "NWNXPopItemProperty")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial IntPtr NWNXPopItemProperty();
   }
 }

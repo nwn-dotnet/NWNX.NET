@@ -13,7 +13,7 @@ namespace NWNX.NET
     /// </summary>
     /// <param name="handler">The method to invoke per server update.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "RegisterMainLoopHandler")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void RegisterMainLoopHandler(delegate* unmanaged<ulong, void> handler);
 
     /// <summary>
@@ -29,7 +29,7 @@ namespace NWNX.NET
     ///   1: TRUE - For conditional scripts, sets the result to TRUE. If the script resource (ncs) is defined in the module, it will not be executed.
     /// </remarks>
     [LibraryImport("NWNX_DotNET", EntryPoint = "RegisterRunScriptHandler")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void RegisterRunScriptHandler(delegate* unmanaged<IntPtr, uint, int> handler);
 
     /// <summary>
@@ -38,7 +38,7 @@ namespace NWNX.NET
     /// </summary>
     /// <param name="handler">The method to handle VM closure requests.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "RegisterClosureHandler")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void RegisterClosureHandler(delegate* unmanaged<ulong, uint, void> handler);
 
     /// <summary>
@@ -50,7 +50,7 @@ namespace NWNX.NET
     /// Use <see cref="StringUtils.ReadNullTerminatedString(byte*)"/> to convert the script name to a C# compatible string.
     /// </remarks>
     [LibraryImport("NWNX_DotNET", EntryPoint = "RegisterSignalHandler")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void RegisterSignalHandler(delegate* unmanaged<IntPtr, void> handler);
 
     /// <summary>
@@ -61,7 +61,7 @@ namespace NWNX.NET
     /// Use <see cref="StringUtils.ReadNullTerminatedString(byte*)"/> to convert the script name to a C# compatible string.
     /// </remarks>
     [LibraryImport("NWNX_DotNET", EntryPoint = "RegisterAssertHandler")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void RegisterAssertHandler(delegate* unmanaged<IntPtr, IntPtr, void> handler);
 
     /// <summary>
@@ -74,7 +74,7 @@ namespace NWNX.NET
     /// Anything invoked by this function is considered undefined behaviour.
     /// </remarks>
     [LibraryImport("NWNX_DotNET", EntryPoint = "RegisterCrashHandler")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void RegisterCrashHandler(delegate* unmanaged<int, IntPtr, void> handler);
   }
 }

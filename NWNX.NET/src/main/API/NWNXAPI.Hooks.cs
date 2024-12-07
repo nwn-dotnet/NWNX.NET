@@ -24,7 +24,7 @@ namespace NWNX.NET
     ///   - Final for things that fully reimplement base game functions
     /// </remarks>
     [LibraryImport("NWNX_DotNET", EntryPoint = "RequestFunctionHook")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static unsafe partial FunctionHook* RequestFunctionHook(IntPtr address, IntPtr managedFuncPtr, int priority);
 
     /// <summary>
@@ -32,7 +32,7 @@ namespace NWNX.NET
     /// </summary>
     /// <param name="hook">The hook to return.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "ReturnFunctionHook")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static unsafe partial void ReturnFunctionHook(FunctionHook* hook);
   }
 }

@@ -15,7 +15,7 @@ namespace NWNX.NET
     /// </summary>
     /// <param name="value">The value to push.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "StackPushInteger")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void StackPushInteger(int value);
 
     /// <summary>
@@ -23,7 +23,7 @@ namespace NWNX.NET
     /// </summary>
     /// <param name="value">The value to push.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "StackPushFloat")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void StackPushFloat(float value);
 
     /// <summary>
@@ -31,7 +31,7 @@ namespace NWNX.NET
     /// </summary>
     /// <param name="value">The value to push.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "StackPushRawString")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void StackPushString([MarshalUsing(typeof(NwStringMarshaller))] string? value);
 
     /// <summary>
@@ -39,7 +39,7 @@ namespace NWNX.NET
     /// </summary>
     /// <param name="value">The value to push.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "StackPushObject")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void StackPushObject(uint value);
 
     /// <summary>
@@ -47,7 +47,7 @@ namespace NWNX.NET
     /// </summary>
     /// <param name="value">The value to push.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "StackPushVector")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void StackPushVector([MarshalUsing(typeof(Vector3Marshaller))] Vector3 value);
 
     /// <summary>
@@ -55,7 +55,7 @@ namespace NWNX.NET
     /// </summary>
     /// <param name="value">The value to push.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "StackPushGameDefinedStructure")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void StackPushGameDefinedStructure(int type, IntPtr value);
 
     /// <summary>
@@ -66,7 +66,7 @@ namespace NWNX.NET
     /// Function IDs can be found here: https://github.com/nwnxee/unified/blob/master/NWNXLib/API/Constants/VirtualMachine.hpp#L51
     /// </remarks>
     [LibraryImport("NWNX_DotNET", EntryPoint = "CallBuiltIn")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void CallBuiltIn(int id);
 
     /// <summary>
@@ -74,7 +74,7 @@ namespace NWNX.NET
     /// </summary>
     /// <returns>The value/result from the function call.</returns>
     [LibraryImport("NWNX_DotNET", EntryPoint = "StackPopInteger")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial int StackPopInteger();
 
     /// <summary>
@@ -82,7 +82,7 @@ namespace NWNX.NET
     /// </summary>
     /// <returns>The value/result from the function call.</returns>
     [LibraryImport("NWNX_DotNET", EntryPoint = "StackPopFloat")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial float StackPopFloat();
 
     /// <summary>
@@ -90,7 +90,7 @@ namespace NWNX.NET
     /// </summary>
     /// <returns>The value/result from the function call.</returns>
     [LibraryImport("NWNX_DotNET", EntryPoint = "StackPopRawString")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     [return: MarshalUsing(typeof(NwStringMarshaller))]
     public static partial string? StackPopString();
 
@@ -99,7 +99,7 @@ namespace NWNX.NET
     /// </summary>
     /// <returns>The value/result from the function call.</returns>
     [LibraryImport("NWNX_DotNET", EntryPoint = "StackPopObject")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial uint StackPopObject();
 
     /// <summary>
@@ -107,7 +107,7 @@ namespace NWNX.NET
     /// </summary>
     /// <returns>The value/result from the function call.</returns>
     [LibraryImport("NWNX_DotNET", EntryPoint = "StackPopVector")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     [return: MarshalUsing(typeof(Vector3Marshaller))]
     public static partial Vector3 StackPopVector();
 
@@ -120,7 +120,7 @@ namespace NWNX.NET
     /// See https://github.com/nwnxee/unified/blob/master/NWNXLib/API/Constants/VirtualMachine.hpp#L34 for engine structure type IDs.
     /// </remarks>
     [LibraryImport("NWNX_DotNET", EntryPoint = "StackPopGameDefinedStructure")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial IntPtr StackPopGameDefinedStructure(int type);
 
     /// <summary>
@@ -132,7 +132,7 @@ namespace NWNX.NET
     /// See https://github.com/nwnxee/unified/blob/master/NWNXLib/API/Constants/VirtualMachine.hpp#L34 for engine structure type IDs.
     /// </remarks>
     [LibraryImport("NWNX_DotNET", EntryPoint = "FreeGameDefinedStructure")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial void FreeGameDefinedStructure(int type, IntPtr value);
 
     /// <summary>
@@ -143,7 +143,7 @@ namespace NWNX.NET
     /// <param name="eventId">A unique identifier for this event.</param>
     /// <returns>1 if the event was successfully queued, 0 on a failure.</returns>
     [LibraryImport("NWNX_DotNET", EntryPoint = "ClosureAssignCommand")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial int ClosureAssignCommand(uint oid, ulong eventId);
 
     /// <summary>
@@ -155,7 +155,7 @@ namespace NWNX.NET
     /// <param name="eventId">A unique identifier for this event.</param>
     /// <returns>1 if the event was successfully queued, 0 on a failure.</returns>
     [LibraryImport("NWNX_DotNET", EntryPoint = "ClosureDelayCommand")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial int ClosureDelayCommand(uint oid, float duration, ulong eventId);
 
     /// <summary>
@@ -166,7 +166,7 @@ namespace NWNX.NET
     /// <param name="eventId">A unique identifier for this event.</param>
     /// <returns>1 if the event was successfully queued, 0 on a failure.</returns>
     [LibraryImport("NWNX_DotNET", EntryPoint = "ClosureActionDoCommand")]
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvCdecl) })]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial int ClosureActionDoCommand(uint oid, ulong eventId);
   }
 }
