@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using NUnit.Framework;
 using NWNX.NET.Tests.Constants;
 
@@ -57,6 +58,50 @@ namespace NWNX.NET.Tests
 
       string? result = NWNXAPI.StackPopString();
       Assert.That(result, Is.EqualTo(expectedValue));
+    }
+
+    [Test]
+    public void GetFirstAreaTest()
+    {
+      NWNXAPI.CallBuiltIn(VMFunctions.GetFirstArea);
+      uint result = NWNXAPI.StackPopObject();
+
+      Assert.That(result, Is.Not.EqualTo(VMConstants.ObjectInvalid));
+
+      NWNXAPI.StackPushInteger(0);
+      NWNXAPI.StackPushObject(result);
+      NWNXAPI.CallBuiltIn(VMFunctions.GetName);
+
+      string? name = NWNXAPI.StackPopString();
+
+      Assert.That(name, Is.EqualTo("Start"));
+    }
+
+    [Test]
+    public void AreaObjectIteratorTest()
+    {
+      NWNXAPI.CallBuiltIn(VMFunctions.GetFirstArea);
+      uint area = NWNXAPI.StackPopObject();
+
+      NWNXAPI.StackPushInteger(VMConstants.ObjectTypeAll);
+      NWNXAPI.StackPushObject(area);
+      NWNXAPI.CallBuiltIn(VMFunctions.GetFirstObjectInArea);
+
+      uint gameObject = NWNXAPI.StackPopObject();
+      HashSet<uint> gameObjects =
+      [
+        gameObject,
+      ];
+
+      while (gameObject != VMConstants.ObjectInvalid)
+      {
+        NWNXAPI.StackPushInteger(VMConstants.ObjectTypeAll);
+        NWNXAPI.StackPushObject(area);
+        NWNXAPI.CallBuiltIn(VMFunctions.GetNextObjectInArea);
+
+        gameObject = NWNXAPI.StackPopObject();
+        Assert.That(gameObjects.Add(gameObject), Is.True, $"Game object iterator returned a duplicate object: '{gameObject}'");
+      }
     }
   }
 }
