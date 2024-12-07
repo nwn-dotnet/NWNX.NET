@@ -15,7 +15,7 @@ namespace NWNX.NET
     /// <param name="function">The name of the function to call.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "NWNXSetFunction")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void NWNXSetFunction([MarshalUsing(typeof(Utf16StringMarshaller))] string plugin, [MarshalUsing(typeof(Utf16StringMarshaller))] string function);
+    public static partial void NWNXSetFunction([MarshalUsing(typeof(Utf8StringMarshaller))] string plugin, [MarshalUsing(typeof(Utf8StringMarshaller))] string function);
 
     /// <summary>
     /// NWNX VM Function. Push an integer to the current argument stack.
