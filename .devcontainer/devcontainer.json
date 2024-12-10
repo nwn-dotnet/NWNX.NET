@@ -11,13 +11,13 @@
       "packages": "curl,unzip,procps,git"
     }
   },
-  "forwardPorts": [5121],
+  "appPort": ["5121:5121/udp"],
   "containerEnv": {
     "NWN_AUTOSAVEINTERVAL": "0",
     "NWN_DIFFICULTY": "4",
     "NWN_ELC": "1",
     "NWN_GAMETYPE": "3",
-    "NWN_LR": "0",
+    "NWN_ILR": "0",
     "NWN_MAXCLIENTS": "1",
     "NWN_MAXLEVEL": "40",
     "NWN_MINLEVEL": "1",
