@@ -1,17 +1,15 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using System.Threading;
-using NUnit.Framework.Internal;
 
-namespace NWNX.NET.Tests
+namespace NWNX.NET.Tests.Async
 {
-  public sealed class MainThreadSynchronizationContext : SynchronizationContext
+  public sealed class MainThreadSynchronizationContext : SynchronizationContext, IAwaitable
   {
     private readonly List<QueuedTask> currentWork = [];
     private readonly List<QueuedTask> queuedTasks = [];
 
-    public INotifyCompletion GetAwaiter()
+    public IAwaiter GetAwaiter()
     {
       return new SynchronizationContextAwaiter(this);
     }

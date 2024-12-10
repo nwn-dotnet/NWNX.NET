@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using NWNX.NET.Native;
+using NWNX.NET.Tests.Async;
 
 namespace NWNX.NET.Tests
 {
@@ -11,6 +12,8 @@ namespace NWNX.NET.Tests
 
     public static void Main()
     {
+      NwTask.MainThreadSynchronizationContext = TestSyncContext;
+
       PrelinkLibraryImports();
       NWNXAPI.RegisterSignalHandler(&OnNWNXSignal);
       NWNXAPI.RegisterMainLoopHandler(&OnLoop);

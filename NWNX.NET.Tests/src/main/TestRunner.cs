@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using NUnit.Framework.Internal.Commands;
 using NUnitLite;
+using NWNX.NET.Tests.Async;
 
 namespace NWNX.NET.Tests
 {
