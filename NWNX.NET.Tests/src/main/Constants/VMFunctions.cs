@@ -15,6 +15,11 @@ namespace NWNX.NET.Tests.Constants
     public const int GetFacingFromLocation = 225;
     public const int GetUserDefinedEventNumber = 247;
     public const int GetName = 253;
+    public const int TalentSpell = 301;
+    public const int TalentFeat = 302;
+    public const int TalentSkill = 303;
+    public const int GetIsTalentValid = 359;
+    public const int GetTypeFromTalent = 362;
     public const int EffectNegativeLevel = 462;
     public const int GetEffectTag = 849;
     public const int TagEffect = 850;
