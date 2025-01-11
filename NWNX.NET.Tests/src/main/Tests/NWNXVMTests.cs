@@ -8,7 +8,6 @@ namespace NWNX.NET.Tests
     [Test]
     [TestCase("NWNX_Core", 1)]
     [TestCase("NWNX_DotNET", 1)]
-    [TestCase("NWNX_SWIG_DotNET", 1)]
     [TestCase("NWNX_MissingPlugin", 0)]
     [TestCase("", 0)]
     [TestCase(null, 0, Ignore = "NWNX throws a std::logic_error")]

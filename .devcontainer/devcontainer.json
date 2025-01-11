@@ -32,7 +32,6 @@
     "NWNX_DOTNET_METHOD": "Main",
     "NWNX_DOTNET_NEW_BOOTSTRAP": "y",
     "NWNX_DOTNET_SKIP": "n",
-    "NWNX_SWIG_DOTNET_SKIP": "n",
     "NWNX_DOTNET_ASSEMBLY": "/workspaces/NWNX.NET/NWNX.NET.Tests/bin/Debug/NWNX.NET.Tests",
     "NWNX_DOTNET_TEST_RESULT_PATH": "/workspaces/NWNX.NET/NWNX.NET.Tests/bin/Debug/NWNX.NET.Tests/results",
     "NWNX_CORE_LOG_LEVEL": "7"
