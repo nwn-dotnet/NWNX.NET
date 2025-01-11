@@ -15,27 +15,23 @@ on:
 
 jobs:
   compile:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'skip ci')"
     permissions:
       security-events: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1.9.0
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          global-json-file: global.json
 
       - name: Build
         run: dotnet build --configuration Debug
-
-      - name: Prepare Outputs
-        id: vars
-        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
 
       - name: Code Analysis
         uses: JetBrains/ReSharper-InspectCode@v0.8
@@ -44,17 +40,18 @@ jobs:
           tool-version: 2024.3.0
 
   test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'skip ci')"
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Build and run tests
+      - name: Build and Run Tests
         uses: devcontainers/ci@v0.3
         with:
+          push: never
           env: |
             NWNX_DOTNET_ASSEMBLY=/workspaces/NWNX.NET/NWNX.NET.Tests/bin/Release/NWNX.NET.Tests
             NWNX_DOTNET_TEST_RESULT_PATH=/workspaces/NWNX.NET/NWNX.NET.Tests/bin/Release/NWNX.NET.Tests/results
