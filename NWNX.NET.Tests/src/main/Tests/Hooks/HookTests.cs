@@ -12,7 +12,6 @@ namespace NWNX.NET.Tests.Hooks
   public sealed class HookTests
   {
     private static readonly IntPtr CExoDebugInternalWriteToLogFile = NativeLibrary.GetExport(NativeLibrary.GetMainProgramHandle(), "_ZN17CExoDebugInternal14WriteToLogFileERK10CExoString");
-    private static readonly unsafe delegate* unmanaged<void*, byte*> CExoStringCStr = (delegate* unmanaged<void*, byte*>)NativeLibrary.GetExport(NativeLibrary.GetMainProgramHandle(), "_ZNK10CExoString4CStrEv");
 
     private const int HookOrder = -2000005;
 
@@ -49,7 +48,7 @@ namespace NWNX.NET.Tests.Hooks
     private static unsafe void WriteLogFileDelegateHandler(void* pExoDebugInternal, void* pMessage)
     {
       callCount++;
-      logMessage = StringUtils.ReadNullTerminatedString(CExoStringCStr(pMessage));
+      logMessage = StringUtils.ReadNullTerminatedString(*(byte**)pMessage);
     }
 
     [Test]
@@ -79,7 +78,7 @@ namespace NWNX.NET.Tests.Hooks
     private static unsafe void WriteLogFileUnmanagedHandler(void* pExoDebugInternal, void* pMessage)
     {
       callCount++;
-      logMessage = StringUtils.ReadNullTerminatedString(CExoStringCStr(pMessage));
+      logMessage = StringUtils.ReadNullTerminatedString(*(byte**)pMessage);
     }
 
     [TearDown]
