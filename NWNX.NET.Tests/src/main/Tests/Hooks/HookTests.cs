@@ -46,7 +46,7 @@ namespace NWNX.NET.Tests.Hooks
       Assert.That(logMessage, Is.EqualTo(expectedMessage + "\n"));
     }
 
-    private unsafe void WriteLogFileDelegateHandler(void* pExoDebugInternal, void* pMessage)
+    private static unsafe void WriteLogFileDelegateHandler(void* pExoDebugInternal, void* pMessage)
     {
       callCount++;
       logMessage = StringUtils.ReadNullTerminatedString(CExoStringCStr(pMessage));

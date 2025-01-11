@@ -10,7 +10,7 @@ namespace NWNX.NET.Tests
     private static readonly MainThreadSynchronizationContext TestSyncContext = new MainThreadSynchronizationContext();
     private static readonly TestRunner TestRunner = new TestRunner(TestSyncContext);
 
-    public static event Action<ulong> OnMainLoop;
+    public static event Action<ulong>? OnMainLoop;
 
     public static void Main()
     {
@@ -40,7 +40,6 @@ namespace NWNX.NET.Tests
           TestRunner.RunTestsAsync();
           break;
         case "ON_DESTROY_SERVER":
-          break;
         case "ON_DESTROY_SERVER_AFTER":
           break;
       }

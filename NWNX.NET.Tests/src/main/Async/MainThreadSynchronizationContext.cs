@@ -55,17 +55,8 @@ namespace NWNX.NET.Tests.Async
       }
     }
 
-    private readonly struct QueuedTask
+    private readonly struct QueuedTask(SendOrPostCallback callback, object? state)
     {
-      private readonly SendOrPostCallback callback;
-      private readonly object? state;
-
-      public QueuedTask(SendOrPostCallback callback, object? state)
-      {
-        this.callback = callback;
-        this.state = state;
-      }
-
       public void Invoke()
       {
         try

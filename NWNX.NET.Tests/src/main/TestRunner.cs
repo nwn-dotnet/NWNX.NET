@@ -45,7 +45,7 @@ namespace NWNX.NET.Tests
       }
     }
 
-    private string[] GetRunnerArguments()
+    private static string[] GetRunnerArguments()
     {
       return ["--mainthread", $"--work={TestResultPath}"];
     }

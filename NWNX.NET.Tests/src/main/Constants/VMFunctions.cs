@@ -1,3 +1,5 @@
+// ReSharper disable InconsistentNaming
+
 namespace NWNX.NET.Tests.Constants
 {
   public static class VMFunctions

@@ -53,6 +53,7 @@ namespace NWNX.NET
     /// <summary>
     /// VM Function. Push a game defined structure (pointer) to the current argument stack.
     /// </summary>
+    /// <param name="type">The engine structure type.</param>
     /// <param name="value">The value to push.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "StackPushGameDefinedStructure")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
