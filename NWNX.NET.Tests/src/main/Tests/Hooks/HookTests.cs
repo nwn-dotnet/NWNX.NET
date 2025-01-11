@@ -8,7 +8,8 @@ using NWNX.NET.Tests.Constants;
 
 namespace NWNX.NET.Tests.Hooks
 {
-  public class HookTests
+  [TestFixture(Category = "Hooks")]
+  public sealed class HookTests
   {
     private static readonly IntPtr CExoDebugInternalWriteToLogFile = NativeLibrary.GetExport(NativeLibrary.GetMainProgramHandle(), "_ZN17CExoDebugInternal14WriteToLogFileERK10CExoString");
     private static readonly unsafe delegate* unmanaged<void*, byte*> CExoStringCStr = (delegate* unmanaged<void*, byte*>)NativeLibrary.GetExport(NativeLibrary.GetMainProgramHandle(), "_ZNK10CExoString4CStrEv");

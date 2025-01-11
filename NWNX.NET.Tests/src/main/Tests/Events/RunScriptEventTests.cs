@@ -10,7 +10,7 @@ using NWNX.NET.Tests.Constants;
 namespace NWNX.NET.Tests.Events
 {
   [TestFixture(Category = "Events")]
-  public class RunScriptEventTest
+  public sealed class RunScriptEventTests
   {
     private const string EventScriptName = "dotnet_test";
 

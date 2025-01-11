@@ -9,7 +9,7 @@ using NWNX.NET.Tests.Constants;
 namespace NWNX.NET.Tests.Events
 {
   [TestFixture(Category = "Events")]
-  public class ClosureEventTest
+  public sealed class ClosureEventTests
   {
     private static ulong nextEventId;
 

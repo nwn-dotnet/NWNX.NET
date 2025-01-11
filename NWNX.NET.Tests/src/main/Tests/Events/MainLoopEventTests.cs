@@ -9,7 +9,7 @@ using NWNX.NET.Tests.Async;
 namespace NWNX.NET.Tests.Events
 {
   [TestFixture(Category = "Events")]
-  public class MainLoopEventTest
+  public sealed class MainLoopEventTests
   {
     private const int FrameCount = 60;
 

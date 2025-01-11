@@ -6,7 +6,7 @@ using NWNX.NET.Tests.Native;
 namespace NWNX.NET.Tests.EngineStructures
 {
   [TestFixture(Category = "Engine Structures")]
-  public class CassowaryTests
+  public sealed class CassowaryTests
   {
     [Test]
     public void CassowaryTest()

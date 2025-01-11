@@ -6,7 +6,7 @@ using NWNX.NET.Tests.Native;
 namespace NWNX.NET.Tests.EngineStructures
 {
   [TestFixture(Category = "Engine Structures")]
-  public class JsonTests
+  public sealed class JsonTests
   {
     [Test]
     public void JsonTest()
