@@ -5,7 +5,7 @@ using NWNX.NET.Tests.Native;
 
 namespace NWNX.NET.Tests.EngineStructures
 {
-  [TestFixture(Category = "VM Tests")]
+  [TestFixture(Category = "Engine Structures")]
   public sealed class LocationTests
   {
     [Test]

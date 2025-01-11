@@ -9,27 +9,33 @@ using NWNX.NET.Tests.Native;
 
 namespace NWNX.NET.Tests.EngineStructures
 {
-  [TestFixture(Category = "VM Tests")]
+  [TestFixture(Category = "Engine Structures")]
   public sealed class EventTests
   {
     private const int UserDefinedEventNumber = 12321;
     private const int UserDefinedEventType = 3001;
-    private const uint ModuleObjectId = 0;
     private const string EventScriptName = "event_test";
 
     private static int triggeredEventNumber;
+    private uint moduleObjectId;
 
     [SetUp]
     public unsafe void Setup()
     {
+      NWNXAPI.CallBuiltIn(VMFunctions.GetModule);
+      moduleObjectId = NWNXAPI.StackPopObject();
+
       triggeredEventNumber = 0;
 
       NWNXAPI.RegisterRunScriptHandler(&RunScriptHandler);
 
       NWNXAPI.StackPushString(EventScriptName);
       NWNXAPI.StackPushInteger(UserDefinedEventType);
-      NWNXAPI.StackPushObject(ModuleObjectId);
+      NWNXAPI.StackPushObject(moduleObjectId);
       NWNXAPI.CallBuiltIn(VMFunctions.SetEventScript);
+      bool success = NWNXAPI.StackPopInteger() == 1;
+
+      Assert.That(success, Is.True);
     }
 
     [Test]
@@ -42,7 +48,7 @@ namespace NWNX.NET.Tests.EngineStructures
       Assert.That(eventStruct.Pointer, Is.Not.EqualTo(IntPtr.Zero));
 
       NWNXAPI.StackPushGameDefinedStructure(EngineStructureType.Event, eventStruct);
-      NWNXAPI.StackPushObject(ModuleObjectId);
+      NWNXAPI.StackPushObject(moduleObjectId);
       NWNXAPI.CallBuiltIn(VMFunctions.SignalEvent);
 
       await NwTask.NextFrame();
@@ -57,8 +63,11 @@ namespace NWNX.NET.Tests.EngineStructures
 
       NWNXAPI.StackPushString(string.Empty);
       NWNXAPI.StackPushInteger(UserDefinedEventType);
-      NWNXAPI.StackPushObject(ModuleObjectId);
+      NWNXAPI.StackPushObject(moduleObjectId);
       NWNXAPI.CallBuiltIn(VMFunctions.SetEventScript);
+      bool success = NWNXAPI.StackPopInteger() == 1;
+
+      Assert.That(success, Is.True);
     }
 
     [UnmanagedCallersOnly]
