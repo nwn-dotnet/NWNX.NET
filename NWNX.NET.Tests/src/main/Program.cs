@@ -10,17 +10,19 @@ namespace NWNX.NET.Tests
     private static readonly MainThreadSynchronizationContext TestSyncContext = new MainThreadSynchronizationContext();
     private static readonly TestRunner TestRunner = new TestRunner(TestSyncContext);
 
+    public static event Action<ulong> OnMainLoop;
+
     public static void Main()
     {
       NwTask.MainThreadSynchronizationContext = TestSyncContext;
 
       PrelinkLibraryImports();
-      NWNXAPI.RegisterSignalHandler(&OnNWNXSignal);
-      NWNXAPI.RegisterMainLoopHandler(&OnLoop);
+      NWNXAPI.RegisterSignalHandler(&NWNXSignalHandler);
+      NWNXAPI.RegisterMainLoopHandler(&MainLoopHandler);
     }
 
     [UnmanagedCallersOnly]
-    private static void OnNWNXSignal(IntPtr signalPtr)
+    private static void NWNXSignalHandler(IntPtr signalPtr)
     {
       string? signal = signalPtr.ReadNullTerminatedString();
       if (string.IsNullOrEmpty(signal))
@@ -45,9 +47,10 @@ namespace NWNX.NET.Tests
     }
 
     [UnmanagedCallersOnly]
-    private static void OnLoop(ulong _)
+    private static void MainLoopHandler(ulong frame)
     {
       TestSyncContext.Update();
+      OnMainLoop?.Invoke(frame);
     }
 
     private static void PrelinkLibraryImports()
