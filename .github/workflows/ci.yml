@@ -46,7 +46,7 @@ jobs:
             analysis-cache
 
       - name: Code Analysis
-        uses: JetBrains/ReSharper-InspectCode@v0.3
+        uses: JetBrains/ReSharper-InspectCode@v0.8
         with:
           solution: ./NWNX.NET.sln
           tool-version: 2024.3.0
