@@ -37,14 +37,6 @@ jobs:
         id: vars
         run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
 
-      - name: Code Analysis Cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.local/share/JetBrains
-          key: analysis-cache-${{ steps.vars.outputs.sha_short }}
-          restore-keys: |
-            analysis-cache
-
       - name: Code Analysis
         uses: JetBrains/ReSharper-InspectCode@v0.8
         with:
