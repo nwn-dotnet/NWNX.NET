@@ -32,6 +32,7 @@ namespace NWNX.NET.Tests.Constants
     public const int TagItemProperty = 855;
     public const int GetFirstArea = 861;
     public const int SetEventScript = 886;
+    public const int SqlPrepareQueryObject = 924;
     public const int GetEffectInteger = 939;
     public const int GetLocalCassowary = 945;
     public const int CassowaryConstrain = 949;

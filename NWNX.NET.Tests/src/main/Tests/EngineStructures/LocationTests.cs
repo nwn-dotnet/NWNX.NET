@@ -1,3 +1,4 @@
+using System;
 using System.Numerics;
 using NUnit.Framework;
 using NWNX.NET.Tests.Constants;
@@ -25,6 +26,8 @@ namespace NWNX.NET.Tests.EngineStructures
       NWNXAPI.CallBuiltIn(VMFunctions.Location);
 
       using EngineStructure location = new EngineStructure(EngineStructureType.Location, NWNXAPI.StackPopGameDefinedStructure(EngineStructureType.Location));
+
+      Assert.That(location.Pointer, Is.Not.EqualTo(IntPtr.Zero));
 
       NWNXAPI.StackPushGameDefinedStructure(EngineStructureType.Location, location);
       NWNXAPI.CallBuiltIn(VMFunctions.GetAreaFromLocation);

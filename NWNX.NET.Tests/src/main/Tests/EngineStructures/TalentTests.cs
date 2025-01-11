@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 using NWNX.NET.Tests.Constants;
 using NWNX.NET.Tests.Native;
@@ -55,6 +56,8 @@ namespace NWNX.NET.Tests.EngineStructures
 
     private static void CheckTalentValid(EngineStructure talent, int expectedTalentType, int expectedValid)
     {
+      Assert.That(talent.Pointer, Is.Not.EqualTo(IntPtr.Zero));
+
       NWNXAPI.StackPushGameDefinedStructure(EngineStructureType.Talent, talent);
       NWNXAPI.CallBuiltIn(VMFunctions.GetIsTalentValid);
 
