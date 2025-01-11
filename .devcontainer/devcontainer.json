@@ -1,6 +1,6 @@
 {
   "name": "nwnx.net",
-  "image": "nwnxee/unified:build8193.36",
+  "image": "nwnxee/unified:build8193.37",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/NWNX.NET,type=bind",
   "workspaceFolder": "/workspaces/NWNX.NET",
   "features": {
