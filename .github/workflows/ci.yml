@@ -140,6 +140,8 @@ jobs:
         working-directory: binaries
 
       - name: Upload Release Binaries
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release create ${{ needs.build.outputs.tag }} --title "Release ${{ needs.build.outputs.version }}"
           gh release upload ${{ needs.build.outputs.tag }} NWNX.NET.zip
