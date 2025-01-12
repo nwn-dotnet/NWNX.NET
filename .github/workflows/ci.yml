@@ -117,5 +117,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Binaries
-          path: bin/Release
+          path: NWNX.NET/bin/Release
           if-no-files-found: error
