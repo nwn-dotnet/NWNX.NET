@@ -73,3 +73,49 @@ jobs:
         with:
           name: Test Results
           path: NWNX.NET.Tests/bin/Release/NWNX.NET.Tests/results/*.xml
+
+  build:
+    runs-on: ubuntu-20.04
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    needs: [compile, test]
+    outputs:
+      version: ${{ steps.vars.outputs.VERSION }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Version and Tag
+        id: bump_version
+        uses: anothrNick/github-tag-action@1.71.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
+          RELEASE_BRANCHES: main
+          WITH_V: true
+          PRERELEASE_SUFFIX: alpha
+          PRERELEASE: ${{ github.ref != 'main' }}
+          TAG_CONTEXT: branch
+
+      - name: Prepare Outputs
+        id: vars
+        run: |
+          echo "VERSION=$(echo ${{ steps.bump_version.outputs.tag }} | sed 's/[v]//g')" >> "$GITHUB_OUTPUT"
+
+      - name: Build Release Binaries
+        id: build
+        run: dotnet build --configuration Release -p:Version=${{ steps.vars.outputs.VERSION }}
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Binaries
+          path: bin/Release
+          if-no-files-found: error
