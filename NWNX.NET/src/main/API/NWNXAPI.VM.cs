@@ -8,6 +8,9 @@ using NWNX.NET.Native.Interop;
 
 namespace NWNX.NET
 {
+  /// <summary>
+  /// NWNX exported API functions from native "NWNX_DotNET" library.
+  /// </summary>
   public static partial class NWNXAPI
   {
     /// <summary>

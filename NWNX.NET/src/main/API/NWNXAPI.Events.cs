@@ -5,6 +5,9 @@ using NWNX.NET.Native;
 
 namespace NWNX.NET
 {
+  /// <summary>
+  /// NWNX exported API functions from native "NWNX_DotNET" library.
+  /// </summary>
   public static unsafe partial class NWNXAPI
   {
     /// <summary>
