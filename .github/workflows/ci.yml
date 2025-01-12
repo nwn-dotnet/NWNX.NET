@@ -75,11 +75,12 @@ jobs:
           path: NWNX.NET.Tests/bin/Release/NWNX.NET.Tests/results/*.xml
 
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     needs: [compile, test]
     outputs:
       version: ${{ steps.vars.outputs.VERSION }}
+      tag: ${{ steps.vars.outputs.TAG }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -108,6 +109,7 @@ jobs:
         id: vars
         run: |
           echo "VERSION=$(echo ${{ steps.bump_version.outputs.tag }} | sed 's/[v]//g')" >> "$GITHUB_OUTPUT"
+          echo "TAG=$(echo ${{ steps.bump_version.outputs.tag }})" >> "$GITHUB_OUTPUT"
 
       - name: Build Release Binaries
         id: build
@@ -119,3 +121,25 @@ jobs:
           name: Binaries
           path: NWNX.NET/bin/Release
           if-no-files-found: error
+
+  release:
+    runs-on: ubuntu-latest
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
+    needs: build
+    permissions:
+      contents: write
+    steps:
+      - name: Download Release Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: Binaries
+          path: binaries
+
+      - name: Zip Binaries
+        run: zip -r ../NWNX.NET.zip ./*
+        working-directory: binaries
+
+      - name: Upload Release Binaries
+        run: |
+          gh release create ${{ needs.build.outputs.tag }} --title "Release ${{ needs.build.outputs.version }}"
+          gh release upload ${{ needs.build.outputs.tag }} NWNX.NET.zip
