@@ -5,7 +5,8 @@ using System.Runtime.InteropServices.Marshalling;
 namespace NWNX.NET.Native.Interop
 {
   /// <summary>
-  /// Marshals a string using <see cref="StringUtils"/><br/>
+  /// Marshals a string using <see cref="StringUtils"/>.<br/>
+  /// This should be used with <see cref="LibraryImportAttribute"/> declarations.<br/>
   /// Encoding can be configured by setting the <see cref="StringUtils.Encoding"/> property.
   /// </summary>
   [CustomMarshaller(typeof(string), MarshalMode.Default, typeof(NwStringMarshaller))]
