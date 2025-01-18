@@ -58,7 +58,7 @@ namespace NWNX.NET
     /// <param name="value">The value to push.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "NWNXPushEffect")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    internal static partial void NWNXPushEffect(IntPtr value);
+    public static partial void NWNXPushEffect(IntPtr value);
 
     /// <summary>
     /// NWNX VM Function. Push an item property game structure pointer to the current argument stack.
@@ -66,7 +66,7 @@ namespace NWNX.NET
     /// <param name="value">The value to push.</param>
     [LibraryImport("NWNX_DotNET", EntryPoint = "NWNXPushItemProperty")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    internal static partial void NWNXPushItemProperty(IntPtr value);
+    public static partial void NWNXPushItemProperty(IntPtr value);
 
     /// <summary>
     /// NWNX VM Function. Call the function set with <see cref="NWNXSetFunction"/> with the current argument stack.
