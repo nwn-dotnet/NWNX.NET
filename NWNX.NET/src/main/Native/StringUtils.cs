@@ -93,7 +93,7 @@ namespace NWNX.NET.Native
     /// <returns>The converted managed string.</returns>
     public static string? ReadNullTerminatedString(byte* cString)
     {
-      return cString != null ? Encoding.GetString(cString, GetStringLength(cString)) : null;
+      return cString != null ? Encoding.GetString(MemoryMarshal.CreateReadOnlySpanFromNullTerminated(cString)) : null;
     }
 
     /// <inheritdoc cref="ReadNullTerminatedString(byte*)"/>
